@@ -16,14 +16,14 @@ public:
 	shared_ptr<CItem> GetPrevious() const;
 private:
 	string m_value;
-	shared_ptr<CItem> m_next;
-	shared_ptr<CItem> m_previous;
+	shared_ptr<CItem>  m_previous;
+	weak_ptr<CItem> m_next;
 };
 
 CItem::CItem(string value)
 	:m_value(move(value)),
-	m_previous(),
-	m_next()
+	m_previous(std::shared_ptr<CItem>()),
+	m_next(std::weak_ptr<CItem>())
 {}
 
 CItem::~CItem()
@@ -51,7 +51,7 @@ void CItem::SetPrevious(const shared_ptr<CItem> &previous)
 
 shared_ptr<CItem> CItem::GetNext() const
 {
-	return m_next;
+	return m_next.lock();
 }
 
 shared_ptr<CItem> CItem::GetPrevious() const

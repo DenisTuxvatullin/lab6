@@ -28,6 +28,7 @@ BOOST_AUTO_TEST_CASE(TestItem)
 	BOOST_CHECK_EQUAL(item3->GetPrevious(), std::shared_ptr<CItem>());
 }
 
+
 BOOST_AUTO_TEST_CASE(CanReturnLinkToFirstAndLastItemsAndInsertToEnd)
 {	
 	CMyStringList list;
@@ -72,4 +73,3 @@ BOOST_AUTO_TEST_CASE(CanDeleteItem)
 		BOOST_CHECK_EQUAL(list.GetFirst(), std::shared_ptr<CItem>());
 	}
 }
-
