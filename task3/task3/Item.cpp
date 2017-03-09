@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Item.h"
 
+
+
 CItem::CItem(const CItem &val) :
 m_previous(std::shared_ptr<CItem>()),
 m_next(std::weak_ptr<CItem>()),

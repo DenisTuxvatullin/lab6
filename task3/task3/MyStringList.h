@@ -15,7 +15,6 @@ public:
 	std::shared_ptr<CItem> GetPrevious(const std::shared_ptr<CItem> &item) const;
 	void Delete(std::shared_ptr<CItem> &item);
 	void Insert(std::string str, const std::shared_ptr<CItem> &item = std::shared_ptr<CItem>());
-	
 private:
 	std::shared_ptr<CItem> m_first, m_last;
 	int m_count;

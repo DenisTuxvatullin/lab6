@@ -2,8 +2,8 @@
 //
 
 #include "stdafx.h"
-#include "../task3/Item.h"
 #include "../task3/MyStringList.h"
+#include "../task3/Item.h"
 
 BOOST_AUTO_TEST_CASE(TestItem)
 {

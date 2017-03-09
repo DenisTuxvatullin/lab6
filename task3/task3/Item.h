@@ -13,6 +13,7 @@ public:
 	void SetPrevious(const std::shared_ptr<CItem> &previous);
 	std::shared_ptr<CItem> GetNext() const;
 	std::shared_ptr<CItem> GetPrevious() const;
+	
 private:
 	std::string m_value;
 	std::shared_ptr<CItem>  m_previous;
