@@ -1,9 +1,25 @@
 #include "stdafx.h"
-#include "MyStringList.h"
+#include "CMyStringList.h"
+#include <string>
+#include <iostream>
 
 CMyStringList::CMyStringList()
 	:m_first(std::shared_ptr<CItem>()), m_last(std::shared_ptr<CItem>()), m_count(0)
 {
+}
+
+CMyStringList::~CMyStringList()
+{
+	CMyStringList::Clear();
+}
+
+void CMyStringList::Clear()
+{
+	while (m_first)
+	{
+		Delete(m_first);
+	}
+	return;
 }
 
 CMyStringList& CMyStringList::operator=(const CMyStringList& val)
@@ -16,11 +32,9 @@ CMyStringList& CMyStringList::operator=(const CMyStringList& val)
 		auto newPointer = std::make_shared<CItem>(*oldPointer);
 		newPointer->SetPrevious(curPointer);
 		curPointer->SetNext(newPointer);
-
 		curPointer = curPointer->GetNext();
 		oldPointer = oldPointer->GetNext();
 	}
-
 	m_last = std::make_shared<CItem>(*val.m_last);
 	curPointer->SetNext(m_last);
 	m_last->SetPrevious(curPointer);
@@ -110,4 +124,17 @@ void CMyStringList::Insert(std::string str, const std::shared_ptr<CItem> &item)
 		m_last->SetNext(newItem);
 		m_last = newItem;
 	}
+}
+
+void CMyStringList::Info()
+{
+	std::cout << "MyStringList contains: ";
+	std::shared_ptr<CItem> curPointer = GetFirst();
+	std::cout << curPointer->GetValue() << " ";
+	while (curPointer->GetNext())
+	{
+		curPointer = curPointer->GetNext();
+		std::cout << curPointer->GetValue() << " ";
+	}
+		
 }

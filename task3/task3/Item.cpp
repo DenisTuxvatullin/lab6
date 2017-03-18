@@ -10,6 +10,11 @@ m_value(move(val.m_value))
 {
 }
 
+CItem::~CItem()
+{
+	m_previous.reset();
+}
+
 CItem::CItem(std::string value)
 	:m_value(move(value)),
 	m_previous(std::shared_ptr<CItem>()),

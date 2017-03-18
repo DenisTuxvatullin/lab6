@@ -2,8 +2,9 @@
 //
 
 #include "stdafx.h"
-#include "../task3/MyStringList.h"
+#include "../task3/CMyStringList.h"
 #include "../task3/Item.h"
+#include <boost/test/unit_test.hpp>
 
 BOOST_AUTO_TEST_CASE(TestItem)
 {
@@ -41,7 +42,7 @@ BOOST_AUTO_TEST_CASE(CanReturnLinkToFirstAndLastItemsAndInsertToEnd)
 	BOOST_CHECK_EQUAL(list.GetLast()->GetValue(), "bike");
 }
 
-BOOST_AUTO_TEST_CASE(CanInsertAfterIterator)
+BOOST_AUTO_TEST_CASE(CanInsertAfterItem)
 {
 	CMyStringList list;
 	list.Insert("car");
@@ -71,5 +72,14 @@ BOOST_AUTO_TEST_CASE(CanDeleteItem)
 		list.Delete(list.GetFirst());
 		BOOST_CHECK_EQUAL(list.GetLast(), std::shared_ptr<CItem>());
 		BOOST_CHECK_EQUAL(list.GetFirst(), std::shared_ptr<CItem>());
+
+		list.Insert("car");
+		list.Insert("bike");
+		list.Insert("boat");
+		auto it = list.GetLast()->GetPrevious();
+		list.Delete(it);
+		BOOST_CHECK_EQUAL(list.GetFirst()->GetValue(), "car");
+		BOOST_CHECK_EQUAL(list.GetLast()->GetValue(), "boat");
 	}
 }
+

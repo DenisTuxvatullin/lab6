@@ -27,7 +27,7 @@
     <ClInclude Include="Item.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="MyStringList.h">
+    <ClInclude Include="CMyStringList.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
 #include <memory>
-
 class CItem
 {
 public:
 	CItem(std::string value);
+	virtual CItem::~CItem();
 	CItem(const CItem &val);
 	std::string GetValue() const;
 	void SetValue(std::string value);
