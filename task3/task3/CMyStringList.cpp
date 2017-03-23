@@ -4,13 +4,15 @@
 #include <iostream>
 
 CMyStringList::CMyStringList()
-	:m_first(std::shared_ptr<CItem>()), m_last(std::shared_ptr<CItem>()), m_count(0)
+	: m_first(std::shared_ptr<CItem>())
+	, m_last(std::shared_ptr<CItem>())
+	, m_count(0)
 {
 }
 
 CMyStringList::~CMyStringList()
 {
-	CMyStringList::Clear();
+	Clear();
 }
 
 void CMyStringList::Clear()
@@ -66,6 +68,7 @@ std::shared_ptr<CItem> CMyStringList::GetPrevious(const std::shared_ptr<CItem> &
 	return item->GetPrevious();
 }
 
+
 void CMyStringList::Delete(std::shared_ptr<CItem> &item)
 {
 	m_count--;
@@ -94,7 +97,7 @@ void CMyStringList::Delete(std::shared_ptr<CItem> &item)
 void CMyStringList::Insert(std::string str, const std::shared_ptr<CItem> &item)
 {
 	m_count++;
-	auto newItem = std::make_shared<CItem>(move(str));
+	auto newItem = std::make_shared<CItem>(str);
 	if (!m_first)
 	{
 		m_first = newItem;
@@ -126,15 +129,3 @@ void CMyStringList::Insert(std::string str, const std::shared_ptr<CItem> &item)
 	}
 }
 
-void CMyStringList::Info()
-{
-	std::cout << "MyStringList contains: ";
-	std::shared_ptr<CItem> curPointer = GetFirst();
-	std::cout << curPointer->GetValue() << " ";
-	while (curPointer->GetNext())
-	{
-		curPointer = curPointer->GetNext();
-		std::cout << curPointer->GetValue() << " ";
-	}
-		
-}

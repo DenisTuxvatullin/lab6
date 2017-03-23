@@ -5,9 +5,8 @@
 class CMyStringList
 {
 public:
-
-	CMyStringList::CMyStringList();
-	CMyStringList::~CMyStringList();
+	CMyStringList();
+	~CMyStringList();
 	CMyStringList(const CMyStringList &val);
 	CMyStringList & operator=(const CMyStringList& val);
 	std::string GetValue(const std::shared_ptr<CItem> &item) const;
@@ -17,10 +16,11 @@ public:
 	std::shared_ptr<CItem> GetPrevious(const std::shared_ptr<CItem> &item) const;
 	void Delete(std::shared_ptr<CItem> &item);
 	void Insert(std::string str, const std::shared_ptr<CItem> &item = std::shared_ptr<CItem>());
-	void Info();
 private:
-	std::shared_ptr<CItem> m_first, m_last;
+	std::shared_ptr<CItem> m_last;
+	std::shared_ptr<CItem> m_first;
 	int m_count;
 	void CMyStringList::Clear();
 	
 };
+

@@ -5,6 +5,13 @@
 #include "../task3/CMyStringList.h"
 #include "../task3/Item.h"
 #include <boost/test/unit_test.hpp>
+#include <string>
+#include <vector>
+using namespace std;
+#include "stdafx.h"
+#include "../task3/CMyStringList.h"
+#include "../task3/Item.h"
+#include <boost/test/unit_test.hpp>
 
 BOOST_AUTO_TEST_CASE(TestItem)
 {
@@ -31,7 +38,7 @@ BOOST_AUTO_TEST_CASE(TestItem)
 
 
 BOOST_AUTO_TEST_CASE(CanReturnLinkToFirstAndLastItemsAndInsertToEnd)
-{	
+{
 	CMyStringList list;
 	list.Insert("car");
 	BOOST_CHECK_EQUAL(list.GetLast()->GetValue(), "car");
@@ -61,7 +68,7 @@ BOOST_AUTO_TEST_CASE(CanDeleteItem)
 		list.Insert("car");
 		list.Insert("bike");
 		list.Insert("boat");
-		
+
 		list.Delete(list.GetLast());
 		BOOST_CHECK_EQUAL(list.GetLast()->GetValue(), "bike");
 
@@ -82,4 +89,3 @@ BOOST_AUTO_TEST_CASE(CanDeleteItem)
 		BOOST_CHECK_EQUAL(list.GetLast()->GetValue(), "boat");
 	}
 }
-

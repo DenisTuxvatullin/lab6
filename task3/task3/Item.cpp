@@ -6,7 +6,7 @@
 CItem::CItem(const CItem &val) :
 m_previous(std::shared_ptr<CItem>()),
 m_next(std::weak_ptr<CItem>()),
-m_value(move(val.m_value))
+m_value(val.m_value)
 {
 }
 
@@ -16,12 +16,11 @@ CItem::~CItem()
 }
 
 CItem::CItem(std::string value)
-	:m_value(move(value)),
+	:m_value(value),
 	m_previous(std::shared_ptr<CItem>()),
 	m_next(std::weak_ptr<CItem>())
 {
 }
-
 
 std::string CItem::GetValue() const
 {
@@ -30,7 +29,7 @@ std::string CItem::GetValue() const
 
 void CItem::SetValue(std::string value)
 {
-	m_value = move(value);
+	m_value = value;
 }
 
 void CItem::SetNext(const std::shared_ptr<CItem> &next)
